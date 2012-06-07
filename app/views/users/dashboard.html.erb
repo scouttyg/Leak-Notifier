@@ -1,0 +1,20 @@
+<center><h1>User Dashboard</h1><center>
+<br>
+<div align =center>
+	<div style= "width: 40%" align="center">
+		<b style="text-align:left;">Recent password leaks for your account:</b>
+		<ul style="text-align:left;">
+			<% if @leaks.nil? or @leaks.empty? %>
+				<li align=left> 
+					Congratulations, there have been no leaks so far for your accounts (that we know of!)
+				</li>
+			<% else %>
+				<%= @leaks.all do |leak| %>
+					<li align=left> 
+						<%= leak.name %> had a leak recently. Have you <a href='<%= leak.password_reset_link %>'>Changed your password yet?</a>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
+<div>
