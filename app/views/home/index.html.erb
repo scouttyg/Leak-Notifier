@@ -1,0 +1,12 @@
+<h3>Home</h3>
+
+<div align =center>
+	<h4>Latest Password Leaks:</h4>
+	<div style= "width: 40%" align="center">
+		<ul style="text-align:left;">
+	  		<% for entry in FeedEntry.all(:limit => 10, :order => "published_at desc") %>
+	    	<li align=left><%= link_to h(entry.name), entry.url %></li>
+	  		<% end %>
+	  	</ul>
+    </div>
+</div>
