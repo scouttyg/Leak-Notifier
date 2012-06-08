@@ -1,8 +1,8 @@
 <%= yield :select2 %>
 <%= stylesheet_link_tag 'select2' %>
-<script id="script_e9">
+<script id="script_services">
 $(document).ready(function() {
-$("#e9").select2();
+$("#services").select2();
 });
 </script>
 <h2>Sign up</h2>
@@ -16,7 +16,8 @@ $("#e9").select2();
   <%= f.email_field :email %></div>
   <br>
   <div><%= f.label :services, "Please select the services you use:"%>
-  <%= f.select(:services, options_for_select(Service.all.collect {|s| [ s.url, s.id ] }), {}, {:multiple => true, :size => 40, :name =>"e9", :id=>"e9", :style => "width:220px; display:none;"}) %></div>
+  <%= f.select(:service_ids, options_for_select(Service.all.collect {|s| [ s.url, s.id ] }), {}, {:multiple => true, :size => 40, :name =>"user[service_ids][]", :id=>"services", :style => "width:220px; display:none;"}) %>
+</div>
   <br>
   <div><%= f.label :password %>
   <%= f.password_field :password %></div>
