@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120607220814) do
+ActiveRecord::Schema.define(:version => 20120607223413) do
 
   create_table "feed_entries", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(:version => 20120607220814) do
     t.string   "reset_url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "services_users", :id => false, :force => true do |t|
+    t.integer "service_id"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|
