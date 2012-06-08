@@ -1,0 +1,8 @@
+feeder = FeedEntry.last.name
+title_without_punctuation = feeder.gsub(/[^a-zA-Z\s\.-]/, '').split
+array_title = title_without_punctuation.delete_if.with_index{|x, i| i >= title_without_punctuation.index("-")}
+
+all_service_names = (Service.select("name")).collect{|each| each.name}
+all_urls = (Service.select("url")).collect{|each| each.url}
+
+if 
