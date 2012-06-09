@@ -6,11 +6,11 @@
 </div>
 
 <div align =center>
-	<h4>Latest Password Leaks:</h4>
-	<div style= "width: 40%" align="center">
+	<h4>Latest Password Leaks in the News:</h4>
+	<div style= "width: 45%" align="center">
 		<ul style="text-align:left;">
 	  		<% for entry in FeedEntry.all(:limit => 10, :order => "published_at desc") %>
-	    	<li align=left><%= link_to h(entry.name), entry.url %></li>
+	    	<li align=left><%= link_to h(entry.name), entry.url %> - <%=entry.published_at.strftime('%m/%d/%Y') %></li>
 	  		<% end %>
 	  	</ul>
     </div>
