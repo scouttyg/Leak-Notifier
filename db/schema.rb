@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120607223413) do
+ActiveRecord::Schema.define(:version => 20120609210347) do
 
   create_table "feed_entries", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(:version => 20120607223413) do
     t.string   "guid"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "leaks", :force => true do |t|
+    t.string   "service_name"
+    t.integer  "service_id"
+    t.datetime "first_reported"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "feed_entry_id"
   end
 
   create_table "roles", :force => true do |t|
