@@ -19,6 +19,6 @@
 # Learn more: http://github.com/javan/whenever
 
 every 15.minutes do
-	rssfeed = "https://news.google.com/news/feeds?q=password%20leaked&output=xml"
+	rssfeed = "http://news.cnet.com/8300-1009_3-83.xml"
     runner "FeedEntry.update_from_feed(#{rssfeed})"
 end

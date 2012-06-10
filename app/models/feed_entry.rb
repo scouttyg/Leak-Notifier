@@ -33,8 +33,7 @@ class FeedEntry < ActiveRecord::Base
     end
   end
   def self.add_leaks(entry)
-    remove_punctuation_and_put_in_array = entry.title.gsub(/[^a-zA-Z\s\.-]/, '').downcase.split
-    final_array = remove_punctuation_and_put_in_array.delete_if.with_index{|x, i| i >=  remove_punctuation_and_put_in_array.index("-")}
+    final_array = entry.title.gsub(/[^a-zA-Z\s\.-]/, '').downcase.split
     all_service_names = (Service.select("name")).collect{|each| each.name}
     all_urls = (Service.select("url")).collect{|each| each.url}
     final_array.each do |word|
@@ -52,8 +51,8 @@ class FeedEntry < ActiveRecord::Base
         service_id = Service.find_by_url(word).id
         service_name = word
       end
-      last_leak = Leak.find_by_service_name(word)
-      if last_leak.nil? or last_leak.first_reported > 2.months.ago
+      last_leak = Leak.find_by_service_name(service_name)
+      if last_leak.nil? or last_leak.first_reported < 2.months.ago
         if !service_name.blank? and service_name.present?
           Rails.logger.info service_name
           Leak.create!(
