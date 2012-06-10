@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Leak Alert:</h1>
+    <p>
+      We have identified a potential security breach at a site you frequent.<br>
+      The site that is potentially compromised is: <%=@service.url %>
+    </p>
+    <p>
+	  The news article that generated this leak alert is the following:<br>
+	  <%= link_to  @news.url, @news.summary %>
+    </p>
+    <p>Since our natural language parsing isn't perfect, it's possible this is a false alarm. </p>
+  </body>
+</html>

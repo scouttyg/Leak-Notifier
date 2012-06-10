@@ -61,7 +61,18 @@ class FeedEntry < ActiveRecord::Base
             :first_reported => entry.published,
             :feed_entry_id => FeedEntry.find_by_guid(entry.id).id
           )
+          contact_users()
         end
+      end
+    end
+  end
+  
+  def self.contact_users
+    @leak = Leak.last
+    @users_to_contat = Service.find(@leak.service_id).users
+    if @users_to_contact.present?
+      @users_to_contact.each do |user|
+        LeakMailer.leak_alert(user, @leak).deliver
       end
     end
   end
