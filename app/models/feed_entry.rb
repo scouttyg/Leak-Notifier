@@ -23,7 +23,7 @@ class FeedEntry < ActiveRecord::Base
       unless exists? :guid => entry.id
         create!(
           :name => entry.title,
-          :summary => entry.summary,
+          :summary => entry.summary.strip,
           :url => entry.url,
           :published_at => entry.published,
           :guid => entry.id
@@ -61,14 +61,15 @@ class FeedEntry < ActiveRecord::Base
             :first_reported => entry.published,
             :feed_entry_id => FeedEntry.find_by_guid(entry.id).id
           )
-          contact_users()
+          @new_leak = Leak.find_by_service_name(service_name)
+          contact_users(@new_leak)
         end
       end
     end
   end
   
-  def self.contact_users
-    @leak = Leak.last
+  def self.contact_users(new_leak)
+    @leak = new_leak
     @users_to_contat = Service.find(@leak.service_id).users
     if @users_to_contact.present?
       @users_to_contact.each do |user|

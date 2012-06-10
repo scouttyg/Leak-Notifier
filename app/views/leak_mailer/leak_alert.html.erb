@@ -11,7 +11,7 @@
     </p>
     <p>
 	  The news article that generated this leak alert is the following:<br>
-	  <%= link_to  @news.url, @news.summary %>
+	  <%= link_to @news.summary, @news.url %>
     </p>
     <p>Since our natural language parsing isn't perfect, it's possible this is a false alarm. </p>
   </body>
