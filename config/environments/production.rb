@@ -76,7 +76,7 @@ Rails3BootstrapDeviseCancan::Application.configure do
     domain: "example.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "testingleaks@gmail.com",
+    user_name: "leaknotifier@gmail.com",
     password: "1@@333$$$$"
   }
 
