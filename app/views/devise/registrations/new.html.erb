@@ -16,7 +16,7 @@ $("#services").select2();
   <%= f.email_field :email %></div>
   <br>
   <div><%= f.label :services, "Please select the services you use:"%>
-  <%= f.select(:service_ids, options_for_select(Service.all.collect {|s| [ s.url, s.id ] }), {}, {:multiple => true, :size => 40, :name =>"user[service_ids][]", :id=>"services", :style => "width:220px; display:none;"}) %>
+  <%= f.select(:service_ids, options_for_select(Service.find(:all, :order => "url ASC").collect {|s| [ s.url, s.id ] }), {}, {:multiple => true, :size => 40, :name =>"user[service_ids][]", :id=>"services", :style => "width:220px; display:none;"}) %>
 </div>
   <br>
   <div><%= f.label :password %>
