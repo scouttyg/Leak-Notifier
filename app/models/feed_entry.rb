@@ -74,6 +74,7 @@ class FeedEntry < ActiveRecord::Base
     if @users_to_contact.present?
       @users_to_contact.each do |user|
         LeakMailer.leak_alert(user, @leak).deliver
+        Rails.logger.info "I have contacted a user, David."
       end
     end
   end
