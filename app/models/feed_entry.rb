@@ -71,6 +71,7 @@ class FeedEntry < ActiveRecord::Base
   def self.contact_users(new_leak)
     @leak = new_leak
     @users_to_contat = Service.find(@leak.service_id).users
+    fuck_you
     if @users_to_contact.present?
       @users_to_contact.each do |user|
         LeakMailer.leak_alert(user, @leak).deliver
