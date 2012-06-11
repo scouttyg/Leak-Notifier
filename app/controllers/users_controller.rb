@@ -3,6 +3,16 @@ class UsersController < ApplicationController
 
   def dashboard
   	@user = current_user
+  	all_user_services = current_user.services
+  	all_leaks = Leak.all
+  	user_leaks = []
+    all_leaks.each do |leak|
+      possible = all_user_services.find_by_url(leak.service_name)
+      if possible.present?
+        user_leaks.push possible
+      end 
+	  end
+	  @leaks = user_leaks
   end
 
   def index

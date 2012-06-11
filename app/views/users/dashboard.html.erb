@@ -9,9 +9,9 @@
 					Congratulations, there have been no leaks so far for your accounts (that we know of!)
 				</li>
 			<% else %>
-				<%= @leaks.all do |leak| %>
+				<% @leaks.each do |leak| %>
 					<li align=left> 
-						<%= leak.name %> had a leak recently. Have you <a href='<%= leak.password_reset_link %>'>Changed your password yet?</a>
+						<%= leak.url %> had a leak recently. Have you changed your password yet?</a>
 					</li>
 				<% end %>
 			<% end %>
