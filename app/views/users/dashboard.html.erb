@@ -1,7 +1,7 @@
 <center><h1>User Dashboard</h1><center>
 <br>
 <div align =center>
-	<div style= "width: 40%" align="center">
+	<div style= "width: 50%" align="center">
 		<b style="text-align:left;">Recent password leaks for your account:</b>
 		<ul style="text-align:left;">
 			<% if @leaks.nil? or @leaks.empty? %>
@@ -10,8 +10,9 @@
 				</li>
 			<% else %>
 				<% @leaks.each do |leak| %>
-					<li align=left> 
-						<%= leak.url %> had a leak recently. Have you changed your password yet?</a>
+					<li align=left>
+						<% leak_news = FeedEntry.find(Leak.find_by_service_id(leak).feed_entry_id) %> 
+						<%= link_to "#{leak.url} had a leak recently. Have you changed your password yet?", leak_news.url %> - <%=leak_news.published_at.strftime('%m/%d/%Y') %>
 					</li>
 				<% end %>
 			<% end %>
