@@ -1,1 +1,11 @@
-Readme textile here
+This App is a first-response notification system for services that might have had their passwords compromised. It uses rss feeds to determine services that may have been affected, and sends out emails to those users to give them a heads up. In the future, I'd love to be able to send a text message to them, or a tweet, but I want to make sure I'm fairly secure before going down that route, as all pieces of data added on could potentially lead to a leak of... LeakNotifiers data, which would be pretty embarrassing.
+
+This is my first fully-complete rails app. It's simple, but it gets the job done.
+
+To do:
+
+Implement RSS feed
+Add texting capabilities
+Add tweet capabilities
+Add privacy policy, about the author pages
+
